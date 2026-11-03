@@ -55206,7 +55206,7 @@ function loop(now) {
       var id = g.getImageData(0, 0, c.width, c.height); var d = id.data;
       for (var i = 0; i < d.length; i += 4) {
         var r = d[i], gg = d[i+1], b = d[i+2];
-        if (b > r + 20 && b > gg + 20 && b > 80 && gg < 170) { d[i] = b; d[i+1] = (gg * 0.5) | 0; d[i+2] = (r * 0.5) | 0; }
+        if (b > 60 && b > gg + 20 && gg < 170 && b >= r - 40) { d[i] = b; d[i+1] = (gg * 0.5) | 0; d[i+2] = (r * 0.3) | 0; }
       }
       g.putImageData(id, 0, 0);
     } catch (e) {}
