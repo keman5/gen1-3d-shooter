@@ -55254,7 +55254,7 @@ function loop(now) {
     var baseTex = await texFromIndex(pbr.baseColorTexture && pbr.baseColorTexture.index, true);
     var rmTex = await texFromIndex(pbr.metallicRoughnessTexture && pbr.metallicRoughnessTexture.index, false);
     var norTex = await texFromIndex(mat.normalTexture && mat.normalTexture.index, false);
-    var material = new THREE.MeshStandardMaterial({map: baseTex ? vividTex(baseTex) : null, metalness: 1.0, roughness: 1.0, transparent: true});
+    var material = new THREE.MeshStandardMaterial({map: baseTex ? vividTex(baseTex) : null, metalness: 1.0, roughness: 1.0, transparent: true, side: THREE.DoubleSide});
     if (rmTex){ material.metalnessMap = rmTex; material.roughnessMap = rmTex; }
     if (norTex) material.normalMap = norTex;
     return new THREE.Mesh(geo, material);
@@ -55301,7 +55301,7 @@ function loop(now) {
     fgGroup.visible = true;
     fgGroup.position.set(v.px - 540, 960 - v.py, 0);
     fgGroup.scale.setScalar(sMain);
-    fgGroup.rotation.y = Math.max(-0.5, Math.min(0.5, v.bank * 0.5));
+    fgGroup.rotation.y = Math.max(-0.35, Math.min(0.35, v.bank * 0.35));
     fgGroup.rotation.x = 0; fgGroup.rotation.z = 0;
     var blink = (v.invT > 0 && Math.floor(v.t * 12) % 2 === 0);
     if (fgMainMat) fgMainMat.opacity = blink ? 0.45 : 1.0;
